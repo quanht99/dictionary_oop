@@ -13,7 +13,7 @@ public class connectWithDatabase {
 
         //username + password
         final String user = "root";
-        final String password = "23041999";
+        final String password = "123456789";
         try{
             Class.forName(JDBC_DRIVER);
 
