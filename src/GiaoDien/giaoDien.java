@@ -36,8 +36,8 @@ public class giaoDien extends JFrame implements ActionListener, KeyListener
         jLabel1.setBounds(10,50,30,30);
         jLabel2.setBounds(400,150,200,30);
         jLabel3.setBounds(400,70,200,30);
-        jList.setBounds(50,90,200,400);
-        jScrollPane.setBounds(50,90,230,400);
+        jList.setBounds(50,90,200,500);
+        jScrollPane.setBounds(50,90,230,500);
         jButton1.addActionListener(this);
         jTextField1.addKeyListener(this);
 
@@ -56,7 +56,7 @@ public class giaoDien extends JFrame implements ActionListener, KeyListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       abc();
+       abc();//sua
     }
 
     public void listWord(){
