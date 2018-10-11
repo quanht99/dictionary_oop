@@ -8,16 +8,16 @@ public class connectWithDatabase {
 
     public static Connection getConnection(){
         // ten driver + url db
-        final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-        final String url = "jdbc:mysql://localhost:3306/dictionary?autoReconnect=true&useSSL=false";
+        final String JDBC_DRIVER = "org.sqlite.JDBC";
+        final String url = "jdbc:sqlite:C:\\Users\\ADMIN\\Documents\\dictionary_oop\\database\\data.db";
 
         //username + password
-        final String user = "root";
-        final String password = "23041999";
+//        final String user = "root";
+//        final String password = "23041999";
         try{
             Class.forName(JDBC_DRIVER);
 
-            return DriverManager.getConnection(url, user, password);
+            return DriverManager.getConnection(url);
         }
         catch(ClassNotFoundException | SQLException e) {
             e.printStackTrace();

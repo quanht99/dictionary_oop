@@ -115,7 +115,3 @@ public class giaoDien extends JFrame implements ActionListener, KeyListener
         }
     }
 }
-
-
-
-//String abc = "<html><p>Hello</p></html>";

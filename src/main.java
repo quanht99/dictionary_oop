@@ -1,7 +1,5 @@
-import GiaoDien.giaoDien;
 public class main {
     public static void main(String args[]) {
-        new giaoDien();
-
+        //new giaoDien();
     }
 }

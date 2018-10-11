@@ -9,7 +9,7 @@ public class controller {
         Connection conn = connectWithDatabase.getConnection();
         assert conn != null;
         Statement stmt = conn.createStatement();
-        String sql = "select detail from word where word = ?";
+        String sql = "select detail from dictionary where word = ?";
 
         try{
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -36,14 +36,13 @@ public class controller {
         String[] result = new String[30];
         Connection conn = connectWithDatabase.getConnection();
         assert conn != null;
-        Statement stmt = conn.createStatement();
-        String sql = "select word from word where substring(word, 1, ?) = ?" + " limit  ?";
-
+        //Statement stmt = conn.createStatement();
+        String sql = "select word from dictionary where word like ?";
         try{
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, dai);
-            pstm.setString(2, text);
-            pstm.setInt(3, 30);
+            pstm.setString(1,  "%" + text + "%");
+            System.out.println(sql);
+
             ResultSet rs = pstm.executeQuery();
             int i=0;
             while(rs.next()){
