@@ -1,27 +1,83 @@
 package GiaoDien;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.SQLException;
+import java.awt.event.KeyEvent;
 
 import static controller.controller.findWord;
 import static controller.controller.suggestionWord;
 
-public class giaoDien extends JFrame implements ActionListener, KeyListener
-{
+public class giaoDien extends Component implements ActionListener, KeyListener {
+    private JFrame jFrame;
     private JButton jButton1;
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JLabel jLabel3;
+
     private JTextField jTextField1;
     private JList jList;
     private JScrollPane jScrollPane;
 
-    public giaoDien()   {
+
+    public giaoDien() {
+        jFrame = new JFrame();
+        prepareGUI();
+        setDisplay();
+    }
+
+    /**
+     * set display for JFrame
+     */
+    public void prepareGUI()
+    {
+        jFrame.add(getTabbedPanel());
+    }
+    public void setDisplay() {
+        //jFrame.setSize(1000,600);
+
+        jFrame.setTitle("Dictionary");
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setVisible(true);
+    }
+
+    /**
+     * add JTabbedPane into JFrame
+     */
+
+    public JTabbedPane getTabbedPanel()
+    {
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+
+        JPanel jPanel1 = getJPanel();
+        JPanel jPanel2 = createJPanel("content of panel 2");
+
+        tabbedPane.addTab("Search", null, jPanel1,"page 1");
+        tabbedPane.addTab("Edit", null, jPanel2, "click to show panel 2");
+
+        //tabbedPane.setSize(600,500);
+        tabbedPane.setVisible(true);
+        return tabbedPane;
+    }
+    public JPanel createJPanel(String text) {
+        JPanel panel = new JPanel(new GridLayout(100, 200));
+        JLabel lb = new JLabel(text);
+        lb.setHorizontalAlignment(JLabel.CENTER);
+        panel.add(lb);
+        return panel;
+    }
+    public JPanel getJPanel(){
+
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.white);
+        //panel.setSize(1000,600);
+        panel.setLayout(new FlowLayout());
+
         jButton1 = new JButton("OK");
         jLabel1 = new JLabel("Find");
         jLabel2 = new JLabel();
@@ -33,30 +89,31 @@ public class giaoDien extends JFrame implements ActionListener, KeyListener
 
         jButton1.setBounds(250, 50, 60, 30);
         jTextField1.setBounds(50,50,200,30);
+        //jTextField1.setSize(200,30);
         jLabel1.setBounds(10,50,30,30);
         jLabel2.setBounds(400,150,200,30);
         jLabel3.setBounds(400,70,200,30);
         jList.setBounds(50,90,200,500);
         jScrollPane.setBounds(50,90,230,500);
+
         jButton1.addActionListener(this);
         jTextField1.addKeyListener(this);
 
-        add(jButton1);
-        add(jLabel1);
-        add(jLabel2);
-        add(jLabel3);
-        add(jTextField1);
-        add(jScrollPane);
 
-        setSize(1000,600);
-        setLayout(null);
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel.add(jButton1);
+        panel.add(jTextField1);
+        panel.add(jLabel1);
+        panel.add(jLabel2);
+        panel.add(jLabel3);
+        panel.add(jList);
+        panel.add(jScrollPane);
+
+        return panel;
+
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-       abc();//sua
+        abc();//sua
     }
 
     public void listWord(){
@@ -73,6 +130,8 @@ public class giaoDien extends JFrame implements ActionListener, KeyListener
         jList.setListData(word);
     }
 
+
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -88,7 +147,7 @@ public class giaoDien extends JFrame implements ActionListener, KeyListener
 
     @Override
     public void keyReleased(KeyEvent e) {
-    //nha
+        //nha
         if(( e.getKeyCode() >= 65 && e.getKeyCode()<=90 )
                 || e.getKeyCode() ==8
                 || ( e.getKeyCode()>=48 && e.getKeyCode() <=57)
