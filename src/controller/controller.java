@@ -3,6 +3,7 @@ package controller;
 import Connection.connectWithDatabase;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class controller {
 
@@ -34,23 +35,34 @@ public class controller {
 
     //Goi y
     public static String[] suggestionWord(String text) throws SQLException {
-        int dai;
-        dai = text.length();
-        String[] result = new String[30];
+        ArrayList<String> list = new ArrayList<String>();
+
         Connection conn = connectWithDatabase.getConnection();
         assert conn != null;
-        //Statement stmt = conn.createStatement();
-        String sql = "select word from dictionary where word like ?";
+        String sql = "select word from dictionary where word like ? limit ?";
         try{
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1,  "%" + text + "%");
+            pstm.setInt(2, 50);
             System.out.println(sql);
 
             ResultSet rs = pstm.executeQuery();
             int i=0;
             while(rs.next()){
-                result[i] = rs.getString("word");
+               String test = rs.getString("word");
+               if(text != null){
+                   list.add(test);
+               }
+               else{
+                   break;
+               }
                 i++;
+            }
+            int k=0;
+            int length = list.size();
+            String[] result = new String[length];
+            for(k=0; k<i; k++){
+                result[k] = list.get(k);
             }
             return result;
         }
