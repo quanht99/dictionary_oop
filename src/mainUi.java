@@ -10,7 +10,7 @@ public class mainUi extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("JavaFx/giaoDienDictionary.fxml"));
         primaryStage.setTitle("Dictionary");
-        primaryStage.setScene(new Scene(root, 500, 500));
+        primaryStage.setScene(new Scene(root,1000,700));
         primaryStage.show();
     }
     public static void main(String[] args) {

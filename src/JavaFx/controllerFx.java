@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 
+import javax.tools.OptionChecker;
 import java.sql.SQLException;
 
 
@@ -34,6 +35,16 @@ public class controllerFx {
         labelShowInput.setText(textFieldInput.getText());
         String wordInput = textFieldInput.getText();
         String wordExplain = findWord(wordInput);
+
+        if(wordExplain.equals(""))
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Not found this word");
+            alert.setTitle("Information");
+            alert.setHeaderText("Notification");
+            alert.show();
+        }
+        else
         textAreashowOutput.setText(wordExplain);
     }
     public void showList() throws SQLException {
@@ -53,6 +64,22 @@ public class controllerFx {
 
     }
 
+    @FXML
+    public void displayMouse(MouseEvent mouseEvent)
+    {
+        String text;
+        text = listView.getSelectionModel().getSelectedItem();
+        if(text != null && text.isEmpty() == false)
+            textFieldInput.setText(text);
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Not found this word");
+            alert.setTitle("Information");
+            alert.setHeaderText("Notification");
+            alert.show();
+        }
+    }
     /* Menubar: Menu -> exit*/
     public void ActionEventExit()
     {
