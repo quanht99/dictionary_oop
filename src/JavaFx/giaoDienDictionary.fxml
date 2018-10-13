@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane onDragDetected="#actionEvent" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.controllerFx">
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane onDragDetected="#actionEvent" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.controllerFx">
    <children>
       <TabPane layoutX="150.0" layoutY="61.0" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -12,23 +23,27 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="700.0">
                      <children>
-                        <TextField fx:id="textFieldInput" layoutY="86.0" onKeyPressed="#KeyPress" onKeyReleased="#showList" promptText="Search">
+                        <TextField fx:id="textFieldInput" layoutX="8.0" layoutY="79.0" onKeyPressed="#KeyPress" onKeyReleased="#showList" prefHeight="30.0" prefWidth="295.0" promptText="Search" style="-fx-border-color: blue;">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="14.0" />
                            </font></TextField>
-                        <Button layoutX="298.0" layoutY="86.0" mnemonicParsing="false" onAction="#showWord" text="Find">
+                        <Button alignment="CENTER" layoutX="303.0" layoutY="80.0" mnemonicParsing="false" onAction="#showWord" prefHeight="30.0" prefWidth="49.0" style="-fx-background-color: blue;" text="Find" textAlignment="RIGHT">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="14.0" />
                            </font></Button>
-                        <TextArea fx:id="textAreashowOutput" layoutX="455.0" layoutY="208.0" mouseTransparent="true" prefHeight="361.0" prefWidth="359.0">
+                        <ListView fx:id="listView" layoutX="8.0" layoutY="116.0" onMouseClicked="#displayMouse" prefHeight="349.0" prefWidth="342.0" style="-fx-border-color: blue;" />
+                        <WebView fx:id="webView" layoutX="364.0" layoutY="80.0" prefHeight="390.0" prefWidth="336.0" />
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="15.0" prefHeight="51.0" prefWidth="216.0" text="Dictionary" textFill="#142cc9">
                            <font>
-                              <Font size="24.0" />
-                           </font></TextArea>
-                        <ListView fx:id="listView" layoutY="143.0" onMouseClicked="#displayMouse" prefHeight="426.0" prefWidth="375.0" />
-                        <Label fx:id="labelShowInput" layoutX="470.0" layoutY="153.0">
-                           <font>
-                              <Font size="24.0" />
-                           </font></Label>
+                              <Font name="Baskerville Old Face" size="25.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="179.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../Downloads/magnifier.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="413.0" layoutY="33.0" text="Definition" />
                      </children>
                   </AnchorPane>
             </content>

@@ -5,31 +5,37 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
+import javax.print.DocFlavor;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import static controller.controller.findWord;
 import static controller.controller.suggestionWord;
 
-public class controllerFx {
+public class controllerFx implements Initializable {
 
 
     @FXML private TextField textFieldInput;
-    @FXML private Label labelShowInput;
-    @FXML private TextArea textAreashowOutput;
+    @FXML private WebView webView;
+    @FXML private WebEngine webEngine;
     @FXML private ListView<String> listView;
 
     public void actionPerformed(ActionEvent event) throws SQLException {
         showWord();
         ActionEventExit();
     }
+
     public void showWord() throws SQLException {
 
-        labelShowInput.setText(textFieldInput.getText());
         String wordInput = textFieldInput.getText();
         String wordExplain = findWord(wordInput);
 
@@ -42,7 +48,10 @@ public class controllerFx {
             alert.show();
         }
         else
-        textAreashowOutput.setText(wordExplain);
+        {
+            webEngine.loadContent(wordExplain);
+        }
+
     }
     public void showList() throws SQLException {
         String input = textFieldInput.getText();
@@ -62,22 +71,13 @@ public class controllerFx {
     }
 
     @FXML
-    public void displayMouse(MouseEvent mouseEvent)
-    {
+    public void displayMouse(MouseEvent mouseEvent) throws SQLException {
         String text;
         text = listView.getSelectionModel().getSelectedItem();
-        if(text != null && !text.isEmpty())
-            textFieldInput.setText(text);
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Not found this word");
-            alert.setTitle("Information");
-            alert.setHeaderText("Notification");
-            alert.show();
-        }
+        textFieldInput.setText(text);
+
     }
-    /* Menubar: Menu -> exit*/
+
     public void ActionEventExit()
     {
         Platform.exit();
@@ -86,5 +86,11 @@ public class controllerFx {
 
 
     public void actionEvent(MouseEvent mouseEvent) {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //webView = new WebView(); k có dong nay
+        webEngine = webView.getEngine();
     }
 }
