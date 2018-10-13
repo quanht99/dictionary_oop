@@ -1,9 +1,7 @@
-import static test.Speck.toSpeech;
+import GiaoDien.giaoDien;
 
 public class main {
     public static void main(String args[]) {
-        //new giaoDien();
-        String text = "hello";
-        toSpeech(text);
+        new giaoDien();
     }
 }
