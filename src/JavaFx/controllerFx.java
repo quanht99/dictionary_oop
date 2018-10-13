@@ -10,10 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-
-import javax.tools.OptionChecker;
 import java.sql.SQLException;
-
 
 import static controller.controller.findWord;
 import static controller.controller.suggestionWord;
@@ -69,7 +66,7 @@ public class controllerFx {
     {
         String text;
         text = listView.getSelectionModel().getSelectedItem();
-        if(text != null && text.isEmpty() == false)
+        if(text != null && !text.isEmpty())
             textFieldInput.setText(text);
         else
         {
