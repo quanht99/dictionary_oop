@@ -26,22 +26,22 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="700.0">
                      <children>
-                        <TextField fx:id="textFieldInput" layoutY="14.0" onKeyPressed="#KeyPress" onKeyReleased="#showList" promptText="Search">
+                        <TextField fx:id="textFieldInput" layoutY="86.0" onKeyPressed="#KeyPress" onKeyReleased="#showList" promptText="Search">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="24.0" />
                            </font></TextField>
-                        <Button layoutX="200.0" layoutY="14.0" mnemonicParsing="false" onAction="#showWord" text="Find">
+                        <Button layoutX="298.0" layoutY="86.0" mnemonicParsing="false" onAction="#showWord" text="Find">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="24.0" />
                            </font></Button>
-                        <TextArea fx:id="textAreashowOutput" layoutX="288.0" layoutY="98.0" mouseTransparent="true" prefHeight="314.0" prefWidth="276.0">
+                        <TextArea fx:id="textAreashowOutput" layoutX="455.0" layoutY="208.0" mouseTransparent="true" prefHeight="361.0" prefWidth="359.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="24.0" />
                            </font></TextArea>
-                        <ListView fx:id="listView" layoutX="2.0" layoutY="54.0" onMouseClicked="#displayMouse" prefHeight="361.0" prefWidth="250.0" />
-                        <Label fx:id="labelShowInput" layoutX="288.0" layoutY="54.0">
+                        <ListView fx:id="listView" layoutY="143.0" onMouseClicked="#displayMouse" prefHeight="426.0" prefWidth="375.0" />
+                        <Label fx:id="labelShowInput" layoutX="470.0" layoutY="153.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="24.0" />
                            </font></Label>
                      </children>
                   </AnchorPane>
