@@ -5,6 +5,8 @@ import Connection.connectWithDatabase;
 import java.sql.*;
 
 public class controller {
+
+    //seach tu
     public static String findWord(String text) throws SQLException {
         Connection conn = connectWithDatabase.getConnection();
         assert conn != null;
@@ -30,6 +32,7 @@ public class controller {
         }
     }
 
+    //Goi y
     public static String[] suggestionWord(String text) throws SQLException {
         int dai;
         dai = text.length();
@@ -56,5 +59,4 @@ public class controller {
             return null;
         }
     }
-
 }
